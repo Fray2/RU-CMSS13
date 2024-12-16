@@ -303,6 +303,16 @@
 		stat = FIRE_MISSION_STATE_IDLE
 		mission_error = "Target is off bounds or obstructed."
 		return
+	if(GLOB.ship_alt == SHIP_ALT_HIGH)
+		grace_period *= 2
+		first_warning *= 2
+		second_warning *= 2
+		third_warning *= 2
+	if(GLOB.ship_alt == SHIP_ALT_LOW)
+		grace_period /= 2
+		first_warning /= 2
+		second_warning /= 2
+		third_warning /= 2
 
 	var/obj/effect/firemission_effect = new(target_turf)
 

@@ -235,6 +235,7 @@
 
 //OB timings
 #define OB_TRAVEL_TIMING 12 SECONDS
+#define OB_TRAVEL_LOW_TIMING 9 SECONDS
 #define OB_CRASHING_DOWN 1 SECONDS
 #define OB_CLUSTER_DURATION 45 SECONDS
 //=================================================

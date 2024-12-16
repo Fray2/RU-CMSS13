@@ -208,6 +208,10 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 /obj/structure/orbital_cannon/proc/fire_ob_cannon(turf/T, mob/user, squad_behalf)
 	set waitfor = 0
 
+	if(GLOB.ship_alt == SHIP_ALT_HIGH)
+		to_chat(user, "You can't click fire button, maybe... You need to be closer with operation zone?")
+		return
+
 	if(!chambered_tray || !loaded_tray || !tray || !tray.warhead || ob_cannon_busy)
 		return
 
@@ -388,7 +392,11 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 
 /obj/structure/ob_ammo/warhead/proc/warhead_impact(turf/target)
 	// make damn sure everyone hears it
-	playsound(target, 'sound/weapons/gun_orbital_travel.ogg', 100, 1, 75)
+	switch(GLOB.ship_alt)
+		if(SHIP_ALT_LOW)
+			playsound(target, 'core_ru/sound/weapons/gun_orbital_low_travel.ogg', 100, 1, 75)
+		if(SHIP_ALT_MED)
+			playsound(target, 'sound/weapons/gun_orbital_travel.ogg', 100, 1, 75)
 
 	var/cancellation_token = rand(0,32000)
 	GLOB.orbital_cannon_cancellation["[cancellation_token]"] = src
@@ -404,7 +412,11 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 			SPAN_HIGHDANGER("The sky erupts into flames [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_VISIBLE, \
 			SPAN_HIGHDANGER("You hear a very loud sound coming from above to the [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_AUDIBLE \
 		)
-	sleep(OB_TRAVEL_TIMING/3)
+	switch(GLOB.ship_alt)
+		if(SHIP_ALT_LOW)
+			sleep(OB_TRAVEL_LOW_TIMING/3)
+		if(SHIP_ALT_MED)
+			sleep(OB_TRAVEL_TIMING/3)
 
 	for(var/mob/M in urange(25, target))
 		if(get_turf(M) == target)
@@ -415,14 +427,22 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 			SPAN_HIGHDANGER("The sky roars louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_VISIBLE, \
 			SPAN_HIGHDANGER("The sound becomes louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_AUDIBLE \
 		)
-	sleep(OB_TRAVEL_TIMING/3)
+	switch(GLOB.ship_alt)
+		if(SHIP_ALT_LOW)
+			sleep(OB_TRAVEL_LOW_TIMING/3)
+		if(SHIP_ALT_MED)
+			sleep(OB_TRAVEL_TIMING/3)
 
 	for(var/mob/M in urange(15, target))
 		M.show_message( \
 			SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), SHOW_MESSAGE_VISIBLE, \
 			SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), SHOW_MESSAGE_AUDIBLE \
 		)
-	sleep(OB_TRAVEL_TIMING/3)
+	switch(GLOB.ship_alt)
+		if(SHIP_ALT_LOW)
+			sleep(OB_TRAVEL_LOW_TIMING/3)
+		if(SHIP_ALT_MED)
+			sleep(OB_TRAVEL_TIMING/3)
 
 	if(GLOB.orbital_cannon_cancellation["[cancellation_token]"]) // the cancelling notification is in the topic
 		target.ceiling_debris_check(5)
