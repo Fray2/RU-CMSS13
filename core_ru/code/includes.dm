@@ -141,6 +141,7 @@
 #include "modules\mob\living\carbon\xenomorph\abilities\queen\queen_abilities.dm"
 #include "modules\mob\living\carbon\xenomorph\abilities\spitter\spitter_abilities.dm"
 #include "modules\mob\living\carbon\xenomorph\abilities\spitter\spitter_powers.dm"
+#include "modules\mob\living\carbon\xenomorph\abilities\warrior\warrior_powers.dm"
 #include "modules\mob\living\carbon\xenomorph\strains\behavior_delegate.dm"
 #include "modules\mob\living\carbon\xenomorph\strains\castes\lurker\stalker.dm"
 #include "modules\mob\living\carbon\xenomorph\strains\castes\lesser\sacrificer.dm"

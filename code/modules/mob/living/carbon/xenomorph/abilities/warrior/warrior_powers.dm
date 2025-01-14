@@ -104,8 +104,10 @@
 	if (!action_cooldown_check())
 		return
 
+	/* RUCM STARTS THERE
 	if (!isxeno_human(affected_atom) || punch_user.can_not_harm(affected_atom))
 		return
+	RUCM ENDS THERE */
 
 	if (!punch_user.check_state() || punch_user.agility)
 		return
@@ -115,7 +117,24 @@
 	if (distance > 2)
 		return
 
+	//RUCM START THERE
+	var/obj/vehicle/walker/walker = affected_atom
+	if(istype(walker))
+		punch_user.visible_message(SPAN_XENOWARNING("[punch_user] hits [walker] with a devastatingly powerful punch!"), \
+		SPAN_XENOWARNING("We hit [walker] with a devastatingly powerful punch!"))
+		var/sound = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
+		playsound(walker?.seats[VEHICLE_DRIVER], sound, 50, 1)
+		do_mech_warrior_punch(walker)
+		apply_cooldown()
+		return ..()
+	//RUCM ends here
+
 	var/mob/living/carbon/carbon = affected_atom
+
+	//RUCM
+	if (!isxeno_human(affected_atom) || punch_user.can_not_harm(affected_atom))
+		return
+	//RUCM WAS THERE
 
 	if (!punch_user.Adjacent(carbon))
 		return
