@@ -15,6 +15,10 @@ GLOBAL_LIST_INIT(cm_vending_gear_intelligence_officer, list(
 		list("M39 Extended Magazine (10x20mm)", 10, /obj/item/ammo_magazine/smg/m39/extended , null, VENDOR_ITEM_REGULAR),
 		list("M41A AP Magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/ap , null, VENDOR_ITEM_REGULAR),
 		list("M41A Extended Magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/extended , null, VENDOR_ITEM_REGULAR),
+//RUCM START
+		list("M41A MK1 AP Magazine(10x24mm)", 10, /obj/item/ammo_magazine/rifle/m41aMK1/ap , null, VENDOR_ITEM_REGULAR),
+		list("M41A MK1 Magazine(10x24mm)", 5, /obj/item/ammo_magazine/rifle/m41aMK1, null, VENDOR_ITEM_REGULAR),
+//RUCM END
 
 		list("SIDEARM AMMUNITION", 0, null, null, null),
 		list("M44 Heavy Speed Loader (.44)", 10, /obj/item/ammo_magazine/revolver/heavy, null, VENDOR_ITEM_REGULAR),
@@ -23,6 +27,12 @@ GLOBAL_LIST_INIT(cm_vending_gear_intelligence_officer, list(
 		list("M4A3 AP Magazine", 5, /obj/item/ammo_magazine/pistol/ap, null, VENDOR_ITEM_REGULAR),
 		list("VP78 Magazine", 5, /obj/item/ammo_magazine/pistol/vp78, null, VENDOR_ITEM_REGULAR),
 		list("SU-6 Smartpistol Magazine (.45)", 10, /obj/item/ammo_magazine/pistol/smart, null, VENDOR_ITEM_REGULAR),
+
+//RUCM START
+		list("SPECIAL WEAPONS", 0, null, null, null),
+		list("MK1 kit (No mods)", 15, /obj/item/storage/box/guncase/m41aMK1, null, VENDOR_ITEM_REGULAR),
+		list("MOU-53 Shotgun", 15, /obj/item/storage/box/guncase/mou53, null, VENDOR_ITEM_REGULAR),
+//RUCM END
 
 		list("RESTRICTED FIREARMS", 0, null, null, null),
 		list("VP78 Pistol", 15, /obj/item/storage/box/guncase/vp78, null, VENDOR_ITEM_REGULAR),
@@ -169,6 +179,7 @@ GLOBAL_LIST_INIT(cm_vending_guns_intelligence_officer, list(
 		list("M39 Submachine Gun", 4, /obj/item/weapon/gun/smg/m39, VENDOR_ITEM_REGULAR),
 		list("M37A2 Pump Shotgun", 4, /obj/item/weapon/gun/shotgun/pump, VENDOR_ITEM_REGULAR),
 		list("M41A Pulse Rifle MK2", 4, /obj/item/weapon/gun/rifle/m41a, VENDOR_ITEM_REGULAR),
+
 
 		list("PRIMARY AMMUNITION", -1, null, null),
 		list("Box of Buckshot Shells (12g)", 12, /obj/item/ammo_magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
