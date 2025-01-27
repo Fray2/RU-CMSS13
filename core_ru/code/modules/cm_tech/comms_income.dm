@@ -1,4 +1,4 @@
-#define RESOURCE_INCOME_TELECOMMS 0.15
+#define RESOURCE_INCOME_TELECOMMS 0.15 * UNIVERSAL_TECH_POINTS_MULTIPLICATOR
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms
 	var/datum/techtree/xeno_tree
@@ -11,16 +11,19 @@
 
 	if(ROUND_TIME < XENO_COMM_ACQUISITION_TIME)
 		return
+	var/points = RESOURCE_INCOME_TELECOMMS
 
 	var/datum/techtree/tree
 	if(corrupted)
 		tree = xeno_tree
+		points *= UNIVERSAL_XENO_POINTS_MULTIPLICATOR
 	else if(toggled)
 		tree = marine_tree
+		points *= UNIVERSAL_INTEL_POINTS_MULTIPLICATOR
 
 	if(tree)
-		tree.comms_income_total += RESOURCE_INCOME_TELECOMMS
-		tree.add_points(RESOURCE_INCOME_TELECOMMS)
+		tree.comms_income_total += points
+		tree.add_points(points)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/New()
 	. = ..()
