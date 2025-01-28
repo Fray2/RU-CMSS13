@@ -32,7 +32,7 @@
 	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ST)
 		to_chat(user, SPAN_HIGHDANGER("[src] is too heavy for you to use!"))
 		return
-	..(M, user)
+	.=..(M, user)
 
 	if(!isxeno(M))
 		return
