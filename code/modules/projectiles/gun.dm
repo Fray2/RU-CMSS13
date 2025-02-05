@@ -238,6 +238,9 @@
 	var/projectile_type = /obj/projectile
 	/// The multiplier for how much slower this should fire in automatic mode. 1 is normal, 1.2 is 20% slower, 2 is 100% slower, etc. Protected due to it never needing to be edited.
 	VAR_PROTECTED/autofire_slow_mult = 1
+	//RUCM START THERE
+	var/lineart_ru = FALSE
+	//RUCM ENDS HERE
 
 /**
  * An assoc list where the keys are fire delay group string defines

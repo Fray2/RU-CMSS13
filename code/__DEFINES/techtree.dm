@@ -51,7 +51,8 @@
 	/datum/tier/three,\
 	/datum/tier/three/additional,\
 	/datum/tier/three_transition_four,\
-	/datum/tier/four\
+	/datum/tier/four,\
+	/datum/tier/four/additional\
 )
 
 // Droppods
