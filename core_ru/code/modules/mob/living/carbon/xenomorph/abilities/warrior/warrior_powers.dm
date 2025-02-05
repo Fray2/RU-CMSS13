@@ -1,3 +1,13 @@
+
+/datum/action/xeno_action/activable/warrior_punch/proc/do_mech_warrior_punch(obj/vehicle/walker/walker)
+	var/mob/living/carbon/xenomorph/warrior = owner
+	var/damage = rand(base_damage, base_damage + damage_variance)
+
+	walker.take_damage_type(damage*=4, "slash", owner)
+	warrior.face_atom(walker)
+	warrior.animation_attack_on(walker)
+	warrior.flick_attack_overlay(walker, "punch")
+
 /datum/action/xeno_action/activable/warrior_punch/proc/do_boxer_punch(mob/living/carbon/carbon, obj/limb/target_limb)
 	var/mob/living/carbon/xenomorph/warrior = owner
 	var/damage = rand(base_damage, base_damage + damage_variance)

@@ -91,7 +91,14 @@
 
 		M.Collided(src)
 		. = FALSE
+	//RUCM EDIT START
+	else if (istype(target, /obj/vehicle/walker))
+		var/obj/vehicle/walker/walker = target
+		visible_message(SPAN_DANGER("[src] rams into [walker] and skids to a halt!"), SPAN_XENOWARNING("We ram into [walker] and skid to a halt!"))
 
+		walker.Collided(src)
+		. = FALSE
+	//RUCM EDIT ENDS
 	else if (istype(target, /obj/structure/machinery/m56d_hmg))
 		var/obj/structure/machinery/m56d_hmg/HMG = target
 		visible_message(SPAN_DANGER("[src] rams [HMG]!"), SPAN_XENODANGER("We ram [HMG]!"))

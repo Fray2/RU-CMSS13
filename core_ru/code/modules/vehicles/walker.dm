@@ -648,6 +648,14 @@
 		return 1
 	return dmg_multipliers[type] * dmg_multipliers["all"]
 
+/obj/vehicle/walker/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	playsound(src, 'sound/effects/metalhit.ogg', 50, TRUE)
+	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes \the [src] with its tail!"), SPAN_XENOWARNING("You strike \the [src] with your tail!"))
+	xeno.emote("tail")
+	var/damage = xeno.melee_damage_upper
+	take_damage_type(damage*1.2, "slash", xeno)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/vehicle/walker/Collided(atom/A)
 	. = ..()
 
@@ -657,10 +665,21 @@
 			return
 
 		if(health > 0)
-			take_damage_type(250, "blunt", crusher)
+			take_damage_type(250, "slash", crusher)
 			visible_message(SPAN_DANGER("\The [crusher] rams \the [src]!"))
 			Move(get_step(src, crusher.dir))
 		playsound(loc, 'core_ru/sound/vehicle/walker/mecha_crusher.ogg', 35)
+
+/obj/vehicle/walker/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+	if(!charger_ability.momentum)
+		charger_ability.stop_momentum()
+		return
+	playsound(loc, 'core_ru/sound/vehicle/walker/mecha_crusher.ogg', 30, 1)
+	visible_message(SPAN_DANGER("\The [xeno] rams \the [src]!"))
+	Move(get_step(src, xeno.dir))
+	take_damage_type(charger_ability.momentum * 20, "slash", xeno)
+
+	charger_ability.stop_momentum()
 
 /obj/vehicle/walker/hear_talk(mob/living/M as mob, msg, verb = "says", datum/language/speaking, italics = 0, tts_heard_list)
 	var/mob/driver = seats[VEHICLE_DRIVER]
