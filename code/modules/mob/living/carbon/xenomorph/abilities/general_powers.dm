@@ -792,8 +792,20 @@
 			to_chat(xeno, SPAN_XENODANGER("We decide to cancel our spit."))
 			spitting = FALSE
 			return
+	//RUCM STARTS THERE
+	var/list/new_vars = list("damage" = xeno.ammo.damage, "penetration" = xeno.ammo.penetration, "shell_speed" = xeno.ammo.shell_speed, "spit_cost" = xeno.ammo.spit_cost)
+	SEND_SIGNAL(xeno, COMSIG_XENO_PRE_SPIT, new_vars)
+	var/datum/ammo/xeno/new_ammo = new xeno.ammo.type
+	new_ammo.damage = new_vars["damage"]
+	new_ammo.penetration = new_vars["penetration"]
+	new_ammo.shell_speed = new_vars["shell_speed"]
+	new_ammo.spit_cost = new_vars["spit_cost"]
+	/*
 	plasma_cost = xeno.ammo.spit_cost
+	*/
 
+	plasma_cost = new_ammo.spit_cost
+	//RUCM ENDS here
 	if(!check_and_use_plasma_owner())
 		spitting = FALSE
 		return
@@ -805,10 +817,17 @@
 	playsound(xeno.loc, sound_to_play, 25, 1)
 
 	var/obj/projectile/proj = new (current_turf, create_cause_data(xeno.ammo.name, xeno))
+	/* RUCM
 	proj.generate_bullet(xeno.ammo)
+	*/
+	proj.generate_bullet(new_ammo)
+	//RUCM ENDS
 	proj.permutated += xeno
 	proj.def_zone = xeno.get_limbzone_target()
+	/* RUCM
 	proj.fire_at(spit_target, xeno, xeno, xeno.ammo.max_range, xeno.ammo.shell_speed)
+	ENDS THERE*/
+	proj.fire_at(spit_target, xeno, xeno, new_ammo.max_range, new_ammo.shell_speed)
 
 	spitting = FALSE
 
