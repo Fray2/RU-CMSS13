@@ -78,11 +78,18 @@
 	var/recoil = 0
 	///How much the bullet scatters when fired.
 	var/scatter = 0
+//RUCM START
+	///How much scatter is modified for bonus projectiles. Mainly used for shotguns.
+	var/bonus_proj_scatter = 0
+//RUCM END
 	/// Added velocity to fired bullet.
 	var/velocity_add = 0
 	///Multiplier. Increases or decreases how much bonus scatter is added with each bullet during burst fire (wielded only).
 	var/burst_scatter_mult = 4
-
+//RUCM START
+	///Modifier for how far the weapon's projectile can travel before it disappears.
+	var/projectile_max_range_add = 0
+//RUCM END
 	///What minimum range the weapon deals full damage, builds up the closer you get. 0 for no minimum.
 	var/effective_range_min = 0
 	///What maximum range the weapon deals full damage, tapers off using damage_falloff after hitting this value. 0 for no maximum.
@@ -333,6 +340,10 @@
 	//reset initial define-values
 	aim_slowdown = initial(aim_slowdown)
 	wield_delay = initial(wield_delay)
+//RUCM START
+	projectile_max_range_add = initial(projectile_max_range_add)
+	bonus_proj_scatter = initial(bonus_proj_scatter)
+//RUCM END
 
 /// Populate traits_to_give in this proc
 /obj/item/weapon/gun/proc/set_bullet_traits()
@@ -396,12 +407,18 @@
 		accuracy_mult_unwielded += R.accuracy_unwielded_mod
 		scatter += R.scatter_mod
 		scatter_unwielded += R.scatter_unwielded_mod
+//RUCM START
+		bonus_proj_scatter += R.bonus_proj_scatter_mod
+//RUCM END
 		damage_mult += R.damage_mod
 		velocity_add += R.velocity_mod
 		damage_falloff_mult += R.damage_falloff_mod
 		damage_buildup_mult += R.damage_buildup_mod
 		effective_range_min += R.range_min_mod
 		effective_range_max += R.range_max_mod
+//RUCM START
+		projectile_max_range_add += R.projectile_max_range_mod
+//RUCM END
 		recoil += R.recoil_mod
 		burst_scatter_mult += R.burst_scatter_mod
 		modify_burst_amount(R.burst_mod)
@@ -714,6 +731,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	data["unwielded_accuracy"] = accuracy * accuracy_mult_unwielded
 	data["min_accuracy"] = min_accuracy
 	data["max_range"] = max_range
+//RUCM START
+	data["projectile_max_range_add"] = projectile_max_range_add
+	data["effective_range_max_mod"] = effective_range_max
+//RUCM END
 	data["effective_range"] = effective_range
 
 	// damage table data
@@ -1269,7 +1290,7 @@ and you're good to go.
 	//This is where the projectile leaves the barrel and deals with projectile code only.
 	//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 	in_chamber = null // It's not in the gun anymore
-	INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/projectile, fire_at), target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target)
+	INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/projectile, fire_at), target, user, src, projectile_to_fire?.ammo?.max_range + projectile_max_range_add, bullet_velocity, original_target, null, damage_mult, projectile_max_range_add, bonus_proj_scatter) //RuCM here too...
 	projectile_to_fire = null // Important: firing might have made projectile collide early and ALREADY have deleted it. We clear it too.
 	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1518,7 +1539,7 @@ and you're good to go.
 				BP = new /obj/projectile(null, create_cause_data(initial(name), user))
 				BP.generate_bullet(GLOB.ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, NO_FLAGS)
 				BP.accuracy = floor(BP.accuracy * projectile_to_fire.accuracy/initial(projectile_to_fire.accuracy)) //Modifies accuracy of pellets per fire_bonus_projectiles.
-				BP.damage *= damage_buff
+				BP.damage *= damage_buff * damage_mult
 
 				BP.bonus_projectile_check = 2
 				projectile_to_fire.bonus_projectile_check = 1

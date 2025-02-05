@@ -11,6 +11,7 @@
 #include "controllers\subsystem\queue.dm"
 #include "controllers\subsystem\techtree.dm"
 #include "controllers\subsystem\tts.dm"
+#include "datums\elements\bullet_trait\knockback_disable.dm"
 #include "datums\shuttles.dm"
 #include "datums\vehicles.dm"
 #include "datums\skills.dm"
