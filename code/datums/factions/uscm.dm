@@ -7,6 +7,9 @@
 	if(istype(squad))
 		var/squad_clr = current_human.assigned_squad.equipment_color
 		var/marine_rk
+//RUCM START
+		var/marine_dmi = 'icons/mob/hud/marine_hud.dmi'
+//RUCM END
 		var/obj/item/card/id/I = current_human.get_idcard()
 		var/_role
 		if(current_human.job)
@@ -31,6 +34,9 @@
 			if(JOB_TANK_CREW) marine_rk = "tc"
 //RUCM START
 			if(JOB_WALKER) marine_rk = "tc"
+			if(JOB_COMMISSAR)
+				marine_rk = "cmsr"
+				marine_dmi = 'core_ru/icons/mob/hud/marine_hud.dmi'
 //RUCM END
 			if(JOB_INTEL) marine_rk = "io"
 			if(JOB_DROPSHIP_CREW_CHIEF) marine_rk = "dcc"
@@ -57,7 +63,12 @@
 			else
 				IMG.color = "#5A934A"
 			holder.overlays += IMG
+/*
 			holder.overlays += image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad_[marine_rk]")
+*/
+//RUCM START
+			holder.overlays += image(marine_dmi, current_human, "hudsquad_[marine_rk]")
+//RUCM END
 		if(current_human.assigned_squad && current_human.assigned_fireteam)
 			var/image/IMG2 = image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad_[current_human.assigned_fireteam]")
 			IMG2.color = squad_clr
@@ -68,6 +79,9 @@
 				holder.overlays += IMG3
 	else
 		var/marine_rk
+//RUCM START
+		var/marine_dmi = 'icons/mob/hud/marine_hud.dmi'
+//RUCM END
 		var/border_rk
 		var/icon_prefix = "hudsquad_"
 		var/obj/item/card/id/ID = current_human.get_idcard()
@@ -92,6 +106,12 @@
 			if(JOB_AUXILIARY_OFFICER, JOB_CIA_LIAISON)
 				marine_rk = "aso"
 				border_rk = "command"
+//RUCM START
+			if(JOB_COMMISSAR)
+				marine_rk = "cmsr"
+				marine_dmi = 'core_ru/icons/mob/hud/marine_hud.dmi'
+				border_rk = "command"
+//RUCM END
 			if(JOB_GENERAL, JOB_COLONEL, JOB_ACMC, JOB_CMC)
 				marine_rk = "general"
 				border_rk = "command"
@@ -223,6 +243,11 @@
 			var/image/I = image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad")
 			I.color = "#5A934A"
 			holder.overlays += I
+/*
 			holder.overlays += image('icons/mob/hud/marine_hud.dmi', current_human, "[icon_prefix][marine_rk]")
+*/
+//RUCM START
+			holder.overlays += image(marine_dmi, current_human, "[icon_prefix][marine_rk]")
+//RUCM END
 			if(border_rk)
 				holder.overlays += image('icons/mob/hud/marine_hud.dmi', current_human, "hudmarineborder[border_rk]")

@@ -390,7 +390,6 @@
 	new /obj/item/ammo_magazine/flamer_tank/gellied(src)
 	new /obj/item/tool/extinguisher/mini(src)
 
-
 /obj/item/storage/box/kit/mini_sniper
 	name = "\improper M4RA Marksman Kit"
 	pro_case_overlay = "sniper"

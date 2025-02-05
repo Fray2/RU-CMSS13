@@ -196,3 +196,34 @@
 /obj/item/storage/belt/marine/smartgunner/m56c/fill_preset_inventory()
 	new /obj/item/ammo_magazine/smartgun/m56c(src)
 	new /obj/item/ammo_magazine/smartgun/m56c(src)
+
+/obj/item/storage/belt/gun/m44/cspr
+	name = "\improper M276 pattern CSPR holster rig"
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is universal and adjustable for different revolvers, along with six small pouches for speedloaders. It smells faintly of hay"
+	icon_state = "korovin_holster"
+	item_state = "upp_belt"
+	storage_slots = 7
+	max_w_class = SIZE_MEDIUM
+	can_hold = list(
+		/obj/item/weapon/gun/revolver/cspr,
+		/obj/item/ammo_magazine/revolver/mateba/highimpact,
+		/obj/item/ammo_magazine/revolver/mateba,
+	)
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = -1,
+			"icon_y" = -3))
+
+
+/obj/item/storage/belt/gun/m44/cspr/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/cspr())
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
+
+/obj/item/storage/belt/gun/m44/cspr/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/cspr())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
