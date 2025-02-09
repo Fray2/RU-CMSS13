@@ -162,6 +162,9 @@ can cause issues with ammo types getting mixed up during the burst.
 		current_mag.current_rounds--
 		current_mag.chamber_contents[current_mag.chamber_position] = "empty"
 		current_mag.chamber_position--
+//RUCMD START
+		apply_traits(in_chamber)
+//RUCM END
 		return in_chamber
 
 
@@ -1123,6 +1126,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/heavy_barrel/upgraded,
 //RUCM END
 		/obj/item/attachable/compensator,
+		/obj/item/attachable/shotgun_choke,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/flamer,
