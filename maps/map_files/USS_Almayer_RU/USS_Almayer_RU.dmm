@@ -18760,6 +18760,13 @@
 "cbo" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/maint/hull/upper/s_stern)
+"cbq" = (
+/obj/structure/machinery/cm_vending/clothing/commissar{
+	density = 0;
+	pixel_x = -32
+	},
+/turf/open/floor/almayer/bluefull,
+/area/almayer/living/bridgebunks)
 "cbr" = (
 /turf/open/floor/almayer/silver/east,
 /area/almayer/hallways/upper/midship_hallway)
@@ -20156,6 +20163,13 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/s_bow)
+"coG" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Commissar's Bunk"
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/bridgebunks)
 "coI" = (
 /turf/open/floor/almayer/orange/west,
 /area/almayer/hallways/upper/midship_hallway)
@@ -21123,6 +21137,13 @@
 "cKL" = (
 /turf/open/floor/almayer/orangecorner/west,
 /area/almayer/engineering/upper_engineering/port)
+"cKS" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/landmark/start/uscm_commissar,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/bridgebunks)
 "cKY" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/silver,
@@ -29251,6 +29272,7 @@
 /obj/structure/machinery/recharger{
 	pixel_y = 4
 	},
+/obj/item/flag/plantable/ua,
 /turf/open/floor/almayer/redfull,
 /area/almayer/command/cic)
 "giS" = (
@@ -90731,9 +90753,9 @@ oKx
 aGr
 aGr
 ceK
-sxD
-afZ
-bHG
+coG
+cbq
+cKS
 gCP
 aES
 izx

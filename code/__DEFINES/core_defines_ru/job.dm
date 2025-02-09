@@ -10,3 +10,5 @@
 #define JOB_CRASH_SQUAD_SMARTGUNNER "Ash Squad Smartgunner"
 
 #define JOB_WALKER "Mech Operator"
+
+#define JOB_COMMISSAR "USCM Commissar"
