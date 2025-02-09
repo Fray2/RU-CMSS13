@@ -487,11 +487,10 @@
 			if(!sig)
 				to_chat(user, SPAN_WARNING("No signal chosen."))
 				return FALSE
-			var/turf/location = get_turf(sig.signal_loc)
-			var/area/location_area = get_area(location)
-			if(CEILING_IS_PROTECTED(location_area.ceiling, CEILING_PROTECTION_TIER_1))
+			var/turf/roof = get_highest_turf(sig.signal_loc)
+			if(sig.signal_loc != roof.air_strike(1, sig.signal_loc, 1, TRUE))
 				to_chat(user, SPAN_WARNING("Target is obscured."))
-				return FALSE
+				return
 			var/equipment_tag = params["equipment_id"]
 			for(var/obj/structure/dropship_equipment/equipment as anything in shuttle.equipments)
 				var/mount_point = equipment.ship_base.attach_id
@@ -706,22 +705,12 @@
 			continue
 		if(!LT.signal_loc)
 			return FALSE
-		var/turf/TU = get_turf(LT.signal_loc)
-		var/area/targ_area = get_area(LT.signal_loc)
-		var/is_outside = FALSE
-		if(is_ground_level(TU.z))
-			switch(targ_area.ceiling)
-				if(CEILING_NONE)
-					is_outside = TRUE
-				if(CEILING_GLASS)
-					is_outside = TRUE
-		if(!is_outside && !cavebreaker) //cavebreaker doesn't care
-			to_chat(weapon_operator, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
-			return FALSE
-		if (protected_by_pylon(TURF_PROTECTION_CAS, TU))
-			to_chat(weapon_operator, SPAN_WARNING("INVALID TARGET: biological-pattern interference with signal."))
-			return FALSE
-		if(!DEW.ammo_equipped.can_fire_at(TU, weapon_operator))
+		var/turf/signal_loc = get_turf(LT.signal_loc)
+		var/turf/roof = get_highest_turf(signal_loc)
+		if(signal_loc != roof.air_strike(5, signal_loc, 1, TRUE))
+			to_chat(usr, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
+			return
+		if(!DEW.ammo_equipped.can_fire_at(signal_loc, weapon_operator))
 			return FALSE
 
 		DEW.open_fire(LT.signal_loc)
@@ -891,8 +880,8 @@
 	var/turf/shootloc = locate(tt_turf.x + sx*firemission_envelope.recorded_offset, tt_turf.y + sy*firemission_envelope.recorded_offset,tt_turf.z)
 	if(!shootloc)
 		return
-	var/area/laser_area = get_area(shootloc)
-	if(!istype(laser_area) || CEILING_IS_PROTECTED(laser_area.ceiling, CEILING_PROTECTION_TIER_1))
+	var/turf/roof = get_highest_turf(shootloc)
+	if(shootloc != roof.air_strike(1, shootloc, 1, TRUE))
 		if(firemission_envelope.user_is_guided(user))
 			to_chat(user, SPAN_WARNING("Vision Obstructed. You have to go in blind."))
 		firemission_envelope.change_current_loc()

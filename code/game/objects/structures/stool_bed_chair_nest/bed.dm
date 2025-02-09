@@ -416,8 +416,8 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 			to_chat(user, SPAN_WARNING("You can't activate [src]'s beacon here."))
 			return
 
-		var/area/AR = get_area(src)
-		if(CEILING_IS_PROTECTED(AR.ceiling, CEILING_PROTECTION_TIER_1))
+		var/turf/roof = get_highest_turf(loc)
+		if(loc != roof.air_strike(1, loc, 1, TRUE))
 			to_chat(user, SPAN_WARNING("[src] must be in the open or under a glass roof."))
 			return
 

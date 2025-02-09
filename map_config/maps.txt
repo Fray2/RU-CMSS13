@@ -28,20 +28,21 @@ endmap
 
 map fiorina_sciannex
 	minplayers 80
+	disabled
 endmap
 
 map corsat
 	minplayers 80
+	disabled
 endmap
 
 map desert_dam
 	minplayers 60
+	disabled
 endmap
 
 map ice_colony_v2
-	minplayers 130
-	voteweight 0
-	disabled
+	minplayers 40
 endmap
 
 map shivas_snowball
@@ -59,10 +60,12 @@ endmap
 
 map lv759_hybrisa_prospera
 	minplayers 130
+	disabled
 endmap
 
 map new_varadero
 endmap
 
 map whiskey_outpost_v2
+	disabled
 endmap
