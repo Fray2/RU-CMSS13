@@ -3379,7 +3379,7 @@
 /area/almayer/command/cic)
 "awH" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/command,
+/obj/structure/machinery/faxmachine/uscm/almayer/command,
 /obj/item/device/megaphone,
 /obj/structure/machinery/computer/cameras/almayer_brig{
 	desc = "Used to access the various cameras in the security brig.";
@@ -21006,7 +21006,7 @@
 /area/almayer/squads/req)
 "eHx" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/command,
+/obj/structure/machinery/faxmachine/uscm/almayer/command,
 /turf/open/floor/almayer/bluefull,
 /area/almayer/command/cichallway)
 "eHy" = (
@@ -24100,7 +24100,7 @@
 /area/almayer/command/cichallway)
 "gba" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/command{
+/obj/structure/machinery/faxmachine/uscm/almayer/command{
 	department = "AI Core";
 	pixel_y = 8
 	},
@@ -32890,7 +32890,7 @@
 /area/almayer/maint/hull/lower/l_f_s)
 "jIT" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/brig/chief,
+/obj/structure/machinery/faxmachine/uscm/almayer/brig/chief,
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/chief_mp_office)
 "jIV" = (
@@ -39360,7 +39360,7 @@
 /area/almayer/engineering/lower)
 "muV" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/faxmachine/uscm/command/capt{
+/obj/structure/machinery/faxmachine/uscm/almayer/command/capt{
 	name = "Commanding Officer's Fax Machine";
 	pixel_x = -4;
 	pixel_y = 3
@@ -48015,7 +48015,7 @@
 /area/almayer/living/briefing)
 "pUD" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/brig,
+/obj/structure/machinery/faxmachine/uscm/almayer/brig,
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
@@ -54341,7 +54341,7 @@
 /area/almayer/maint/hull/upper/u_a_p)
 "stO" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/brig,
+/obj/structure/machinery/faxmachine/uscm/almayer/brig,
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
 	name = "ship-grade camera"
@@ -66252,7 +66252,7 @@
 	density = 0;
 	pixel_y = 16
 	},
-/obj/structure/machinery/faxmachine/uscm/command{
+/obj/structure/machinery/faxmachine/uscm/almayer/command{
 	density = 0;
 	department = "AI Core";
 	pixel_y = 32

@@ -13,6 +13,10 @@ Format:
 endmap
 
 map rumayer
+	disabled
+endmap
+
+map almayer_mz
 	default
 endmap
 

@@ -3,7 +3,7 @@
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_6"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "ab" = (
 /obj/structure/interior_wall/apc{
@@ -11,7 +11,7 @@
 	pixel_x = -4;
 	pixel_y = -4
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "ac" = (
 /obj/structure/interior_wall/apc{
@@ -23,19 +23,19 @@
 	pixel_x = -4;
 	pixel_y = -4
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "ad" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "wall"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "ae" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "door_back"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "af" = (
 /obj/structure/interior_wall/apc{
@@ -53,7 +53,7 @@
 	pixel_x = 4;
 	pixel_y = -4
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "ah" = (
 /obj/structure/interior_wall/apc{
@@ -61,13 +61,13 @@
 	pixel_x = 1;
 	pixel_y = -4
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "ai" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "front_6"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "aj" = (
 /obj/structure/interior_wall/apc{
@@ -76,21 +76,21 @@
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_5"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "ak" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "wall";
 	opacity = 0
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "al" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "corner_inverse_L";
 	opacity = 0
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "am" = (
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply{
@@ -109,7 +109,7 @@
 	icon_state = "corner_inverse_R";
 	opacity = 0
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "ao" = (
 /obj/structure/interior_wall/apc{
@@ -118,62 +118,62 @@
 /obj/structure/interior_wall/apc{
 	icon_state = "front_5"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "ap" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_4"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "aq" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "front_4"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "ar" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_3"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "as" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "front_3"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "at" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_2"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "au" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "front_2"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "av" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_1"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "aw" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_wheel_L"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "ax" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_wheel_R";
 	opacity = 0
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "ay" = (
 /obj/effect/landmark/interior/spawn/entrance{
@@ -203,22 +203,22 @@
 	icon_state = "front_wheel_L";
 	opacity = 0
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "aB" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "front_wheel_R"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "aC" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "front_1"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "aD" = (
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "aE" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood/vehicle{
@@ -407,7 +407,7 @@
 	layer = 5.2;
 	pixel_y = 32
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "be" = (
 /obj/structure/interior_wall/apc{
@@ -416,7 +416,7 @@
 	layer = 5.2;
 	pixel_y = 32
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "Ty" = (
 /obj/effect/landmark/interior/spawn/vehicle_support_gunner_seat{

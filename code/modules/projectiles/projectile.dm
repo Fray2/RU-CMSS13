@@ -234,7 +234,7 @@
 		ammo.fire_bonus_projectiles(src)
 		bonus_projectile_check = 1 //Mark this projectile as having spawned a set of bonus projectiles.
 
-	path = get_line(starting, target_turf)
+	path = get_line(starting, target_turf, step_count_z = get_dist(starting, get_turf(original)))
 	p_x += clamp((rand()-0.5)*scatter*3, -8, 8)
 	p_y += clamp((rand()-0.5)*scatter*3, -8, 8)
 	update_angle(starting, target_turf)
@@ -364,6 +364,20 @@
 	// Check we can reach the turf at all based on pathed grid
 	if(check_canhit(current_turf, next_turf, ignore_list))
 		return TRUE
+
+	// Simply check if we can continue fly
+	if(current_turf.z != next_turf.z)
+		var/turf/stoping_us = current_turf.z < next_turf.z ? next_turf : current_turf
+		if(stoping_us.antipierce < 2)
+			stoping_us.on_turf_bullet_pass(src)
+		else
+			var/turf/below_next_turf = locate(next_turf.x, next_turf.y, current_turf.z)
+			forceMove(below_next_turf)
+			distance_travelled++
+			vis_travelled++
+			ammo.on_hit_turf(below_next_turf, src)
+			below_next_turf.bullet_act(src)
+			return TRUE
 
 	// Actually move
 	forceMove(next_turf)
@@ -605,7 +619,7 @@
 
 /obj/projectile/proc/check_canhit(turf/current_turf, turf/next_turf, list/ignore_list)
 	var/proj_dir = get_dir(current_turf, next_turf)
-	if((proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf, ignore_list = ignore_list))
+	if((proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf, TRUE, ignore_list = ignore_list))
 		ammo.on_hit_turf(current_turf, src)
 		current_turf.bullet_act(src)
 		return TRUE
@@ -1196,6 +1210,9 @@
 		if(istype(picked_mob))
 			picked_mob.bullet_act(P)
 			return
+	return
+
+/turf/proc/on_turf_bullet_pass(obj/projectile/P)
 	return
 
 // walls can get shot and damaged, but bullets (vs energy guns) do much less.

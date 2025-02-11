@@ -13168,7 +13168,7 @@
 /area/almayer/engineering/lower/workshop)
 "boS" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/structure/machinery/faxmachine/uscm/command{
+/obj/structure/machinery/faxmachine/uscm/almayer/command{
 	pixel_y = 4;
 	pixel_x = 2
 	},
@@ -22488,7 +22488,7 @@
 	density = 0;
 	pixel_y = 16
 	},
-/obj/structure/machinery/faxmachine/uscm/command{
+/obj/structure/machinery/faxmachine/uscm/almayer/command{
 	density = 0;
 	department = "AI Core";
 	pixel_y = 32
@@ -24072,7 +24072,7 @@
 	pixel_y = 24;
 	req_access_txt = "3"
 	},
-/obj/structure/machinery/faxmachine/uscm/brig/chief,
+/obj/structure/machinery/faxmachine/uscm/almayer/brig/chief,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/chief_mp_office)
 "dWm" = (
@@ -25787,7 +25787,7 @@
 /area/almayer/maint/hull/lower/l_m_p)
 "eHx" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/command,
+/obj/structure/machinery/faxmachine/uscm/almayer/command,
 /turf/open/floor/almayer/bluefull,
 /area/almayer/command/cichallway)
 "eHR" = (
@@ -30251,7 +30251,7 @@
 /area/almayer/maint/hull/lower/s_bow)
 "gEn" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/faxmachine/uscm/command/capt{
+/obj/structure/machinery/faxmachine/uscm/almayer/command/capt{
 	name = "Commanding Officer's Fax Machine"
 	},
 /obj/structure/disposalpipe/segment{
@@ -37210,7 +37210,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
 	},
-/obj/structure/machinery/faxmachine/uscm/brig,
+/obj/structure/machinery/faxmachine/uscm/almayer/brig,
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
 "jOG" = (
@@ -42277,7 +42277,7 @@
 /area/almayer/shipboard/brig/cic_hallway)
 "mgn" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/command{
+/obj/structure/machinery/faxmachine/uscm/almayer/command{
 	department = "AI Core";
 	pixel_y = 8
 	},
@@ -48720,7 +48720,7 @@
 /area/almayer/maint/hull/lower/l_a_s)
 "paq" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/brig,
+/obj/structure/machinery/faxmachine/uscm/almayer/brig,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/starboard_hallway)
 "paA" = (
@@ -69429,7 +69429,7 @@
 /obj/item/device/flash{
 	pixel_y = -8
 	},
-/obj/structure/machinery/faxmachine/uscm/brig,
+/obj/structure/machinery/faxmachine/uscm/almayer/brig,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/starboard_hallway)
 "ybf" = (

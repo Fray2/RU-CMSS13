@@ -551,7 +551,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		return FALSE
 
 /obj/structure/machinery/computer/supply_drop_console/proc/handle_supplydrop()
-	SHOULD_NOT_SLEEP(TRUE)
 	var/obj/structure/closet/crate/crate = check_pad()
 	if(!crate)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("No crate was detected on the drop pad. Get Requisitions on the line!")]")
@@ -561,21 +560,33 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/y_coord = deobfuscate_y(y_supply)
 	var/z_coord = SSmapping.levels_by_trait(ZTRAIT_GROUND)
 	if(length(z_coord))
-		z_coord = z_coord[1]
+		if(usr && length(z_coord) > 2)
+			var/zlevel_offset = 0
+			if(SSmapping.configs[GROUND_MAP])
+				zlevel_offset = SSmapping.configs[GROUND_MAP].zlevel_visual_offset
+			var/our_value = tgui_input_number(usr, "Target approx heigh for supply (used for pre launch scan for reach)", "Aprox Destination", zlevel_offset, length(z_coord) - z_coord[1] + zlevel_offset, 0, 30 SECONDS, TRUE)
+			z_coord = length(z_coord) - (our_value + z_coord[1] - zlevel_offset)
+		else
+			z_coord = z_coord[1]
 	else
-		z_coord = 1 // fuck it
+		z_coord = 2 // fuck it
 
-	var/turf/T = locate(x_coord, y_coord, z_coord)
-	if(!T)
+	crate = check_pad()
+	if(!crate)
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("No crate was detected on the drop pad. Get Requisitions on the line!")]")
+		return
+
+	var/turf/target = locate(x_coord, y_coord, z_coord)
+	if(!target)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Error, invalid coordinates.")]")
 		return
 
-	var/area/A = get_area(T)
-	if(A && CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_2))
+	var/turf/roof = get_highest_turf(target)
+	if(target != roof.air_strike(1, target, 1, TRUE))
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone is underground. The supply drop cannot reach here.")]")
 		return
 
-	if(istype(T, /turf/open/space) || T.density)
+	if(istype(target, /turf/open/space) || target.density)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.")]")
 		return
 
@@ -599,7 +610,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	playsound(crate.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
 	var/obj/structure/droppod/supply/pod = new(null, crate)
 	crate.forceMove(pod)
-	pod.launch(T)
+	roof.air_strike(1, target, 1)
+	pod.launch(target)
 	log_ares_requisition("Supply Drop", "Launch [crate.name] to X[x_supply], Y[y_supply].", usr.real_name)
 	log_game("[key_name(usr)] launched supply drop '[crate.name]' to X[x_coord], Y[y_coord].")
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[crate.name]' supply drop launched! Another launch will be available in five minutes.")]")

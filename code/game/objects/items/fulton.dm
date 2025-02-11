@@ -83,8 +83,8 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 		to_chat(user, SPAN_WARNING("You can't attach [src] to something here."))
 		return
 
-	var/area/A = get_area(target_atom)
-	if(A && CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_2))
+	var/turf/roof = get_highest_turf(target_atom.loc)
+	if(target_atom.loc != roof.air_strike(5, target_atom.loc, 1, TRUE))
 		to_chat(usr, SPAN_WARNING("You can't attach [src] to something when underground!"))
 		return
 

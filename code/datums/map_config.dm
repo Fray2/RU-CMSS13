@@ -66,6 +66,8 @@
 
 	var/nightmare_path
 
+	var/zlevel_visual_offset = 0
+
 	/// If truthy this is config for a round overridden map: search for override maps in data/, instead of using a path in maps/
 	var/override_map
 
@@ -299,12 +301,17 @@
 		log_world("map_config defcon_triggers is not a list!")
 		return
 
-	traits = json["traits"]
-	if(islist(traits))
-		for(var/list/ztraits in traits) // Defaults to ground map if not specified
-			if(!ztraits[ZTRAIT_GROUND] && !ztraits[ZTRAIT_MARINE_MAIN_SHIP])
-				ztraits[ZTRAIT_GROUND] = TRUE
-	else if(traits)
+	if(islist(json["traits"]))
+		var/list/traits_to_set = json["traits"]
+		for(var/list/traits_set in traits_to_set)
+			if(traits_set["Zlevels"])
+				var/potential_zlevels = traits_set["Zlevels"]
+				traits_set.Cut(1, 2)
+				for(var/i=0;i<potential_zlevels;i++)
+					traits += list(traits_set)
+			else
+				traits += list(traits_set)
+	else if(!isnull(json["traits"]))
 		log_world("map_config traits is not a list!")
 		return
 
@@ -365,6 +372,9 @@
 
 	if(json["nightmare_path"])
 		nightmare_path = json["nightmare_path"]
+
+	if(json["zlevel_visual_offset"])
+		zlevel_visual_offset = json["zlevel_visual_offset"]
 
 	if(islist(json["environment_traits"]))
 		environment_traits = json["environment_traits"]
