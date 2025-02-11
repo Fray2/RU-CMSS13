@@ -127,6 +127,7 @@
 #include "modules\cm_tech\techs\xeno\tier3\acid_blood.dm"
 #include "modules\cm_tech\techs\xeno\tier3\artillery_blob.dm"
 #include "modules\cm_tech\techs\xeno\tier3\endurance.dm"
+#include "modules\cm_tech\techs\xeno\tier3\expanded_acid_glands.dm"
 #include "modules\cm_tech\techs\xeno\tier3\rev_jelly.dm"
 #include "modules\cm_tech\techs\xeno\tier4\health_up.dm"
 #include "modules\cm_tech\trees\xeno.dm"
