@@ -33,6 +33,7 @@
 	aim_slowdown = SLOWDOWN_ADS_SHOTGUN
 	map_specific_decoration = FALSE
 
+	lineart_ru = TRUE
 	var/pump_delay //How long we have to wait before we can pump the shotgun again.
 	var/pump_sound = "shotgunpump"
 	var/message_delay = 1 SECONDS //To stop message spam when trying to pump the gun constantly.

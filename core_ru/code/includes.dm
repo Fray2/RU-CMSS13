@@ -116,6 +116,7 @@
 #include "modules\cm_tech\techs\marine\tier2\walker.dm"
 #include "modules\cm_tech\techs\marine\tier3\combat_implants.dm"
 #include "modules\cm_tech\techs\marine\tier3\experimentals.dm"
+#include "modules\cm_tech\techs\marine\tier4\personal_railgun.dm"
 #include "modules\cm_tech\techs\xeno\tier1\blockade.dm"
 #include "modules\cm_tech\techs\xeno\tier1\build_for_all.dm"
 #include "modules\cm_tech\techs\xeno\tier1\comms_disruption.dm"
